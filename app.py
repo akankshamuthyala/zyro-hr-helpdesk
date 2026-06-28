@@ -44,7 +44,7 @@ def build_pipeline():
         search_kwargs={"k": 10, "fetch_k": 25, "lambda_mult": 0.5}
     )
     llm = ChatGroq(
-        model="llama-3.3-70b-versatile",
+        model="meta-llama/llama-4-scout-17b-16e-instruct",
         temperature=0.1,
         max_tokens=1024,
         api_key=GROQ_API_KEY
@@ -114,4 +114,4 @@ if user_input := st.chat_input("Ask an HR question..."):
             else:
                 response = REFUSAL
         st.markdown(response)
-        st.session_state.messages.append({"role": "assistant", "content": response})
+        st.session_state.messages.csv.append({"role": "assistant", "content": response})
