@@ -44,7 +44,7 @@ def build_pipeline():
         search_kwargs={"k": 10, "fetch_k": 25, "lambda_mult": 0.5}
     )
     llm = ChatGroq(
-        model="llama-3.1-8b-instant",
+        model="llama-3.3-70b-versatile",
         temperature=0.1,
         max_tokens=1024,
         api_key=GROQ_API_KEY
