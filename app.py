@@ -114,4 +114,4 @@ if user_input := st.chat_input("Ask an HR question..."):
             else:
                 response = REFUSAL
         st.markdown(response)
-        st.session_state.messages.csv.append({"role": "assistant", "content": response})
+        st.session_state.messages.append({"role": "assistant", "content": response})
