@@ -54,10 +54,12 @@ def build_pipeline():
         "IMPORTANT: Documents use both Zyro Dynamics and Acrux Dynamics — same company.\n"
         "Answer using ONLY the HR policy documents below.\n"
         "Include exact numbers, days, grades, policy codes.\n"
+        "The ANNUAL LEAVE ENTITLEMENT table shows: Casual Leave = 8 days, Earned Leave = 15 days, Sick Leave = 10 days.\n"
         "If not found say: I don't have specific information about that in our HR policy documents.\n\n"
         "HR Policy Documents:\n{context}\n\n"
         "Employee Question: {question}\n\nAnswer:"
     )
+
     def chain(question):
         docs = retriever.invoke(question)
         leave_keywords = ["casual leave", "earned leave", "sick leave", "how many leave", "leave entitlement", "days of leave"]
@@ -74,6 +76,7 @@ def build_pipeline():
         answer = StrOutputParser().invoke(response)
         sources = list({d.metadata.get("filename", "") for d in docs})
         return answer, sources
+
     return chain
 
 HR_KEYWORDS = ["leave", "salary", "policy", "wfh", "work from home", "probation",
